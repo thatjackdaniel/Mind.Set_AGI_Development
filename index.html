@@ -31,11 +31,9 @@
         
         <div id="tab-axial" class="tab-content">
             <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center text-sm">Lexical Audit Engine</h2>
-            
             <div class="space-y-4">
                 <textarea id="axial-input" placeholder="PASTE DATA FOR CLINICAL AUDIT..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-48 focus:border-cyan-500 outline-none resize-none text-sm"></textarea>
                 <button onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl hover:bg-cyan-500 hover:text-black transition-all uppercase tracking-widest text-sm">Execute Audit</button>
-                
                 <div id="axial-output" class="mt-6 p-6 bg-black/40 border border-white/5 rounded-xl text-sm leading-relaxed text-white/80 min-h-[100px]">
                     SYSTEM_READY: Passive monitoring active. Offline mode enabled.
                 </div>
@@ -61,19 +59,19 @@
         const BIAS_DB = {
             "GEOPOLITICAL_FRAMING": {
                 words: ["regime", "militant", "unprovoked", "freedom fighter", "surgical strike", "proxy", "unconfirmed", "disinformation", "adversary", "malign"],
-                analysis: "This lexical strand establishes a moral hierarchy. Categorizing actors without legal definitions enforces a specific geopolitical alignment."
+                analysis: "Lexical strand establishing moral hierarchy without objective definition."
             },
             "CORPORATE_LINGUISTICS": {
                 words: ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining", "fiscal"],
-                analysis: "Semantic camouflage identifying financial or mechanical processes hidden behind a mask of professional growth logic."
+                analysis: "Semantic camouflage masking financial processes behind growth-logic."
             },
             "EMOTIONAL_PRIMING": {
                 words: ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable", "crisis"],
-                analysis: "High-intensity adjectives identified. Designed to trigger the limbic system, forcing emotional conclusions before data processing."
+                analysis: "Adjectives designed to bypass logical reasoning via limbic trigger."
             },
             "AUTHORITY_VAGUENESS": {
                 words: ["experts say", "officials confirm", "studies show", "everyone knows", "unnamed sources", "well-placed", "leaked", "it is said"],
-                analysis: "Anonymized authority appeals. Removes accountability from the claim, shifting the burden of proof to unverified sources."
+                analysis: "Anonymized authority appeals used to shift the burden of proof."
             }
         };
 
@@ -99,11 +97,10 @@
 
             for (const [category, data] of Object.entries(BIAS_DB)) {
                 let found = data.words.filter(word => text.includes(word));
-                
                 if (found.length > 0) {
                     intensity += found.length;
                     findingsHTML += `
-                        <div class="audit-card p-4 rounded-xl mb-4">
+                        <div class="audit-card p-4 rounded-xl mb-4 text-left">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-cyan-500 font-bold tracking-tighter text-[10px] uppercase">${category}</span>
                                 <span class="text-[9px] opacity-30 italic">${found.length} Match(es)</span>
@@ -116,16 +113,15 @@
             }
 
             const label = intensity > 5 ? "CRITICAL" : intensity > 2 ? "ELEVATED" : "STABLE";
-            
             output.innerHTML = findingsHTML ? `
                 <div class="mb-6 border-b border-white/10 pb-2 text-center">
                     <h3 class="text-xs font-bold uppercase tracking-widest">Audit Result: <span class="text-cyan-500">${label}</span></h3>
                 </div>
                 ${findingsHTML}
                 <div class="mt-6 p-4 border border-cyan-900/50 rounded-xl text-[10px] opacity-60 text-center italic">
-                    <strong>SYSTEM_ADVICE:</strong> Lexical saturation detected. Disregard emotive framing and cross-reference with raw entity data.
+                    <strong>SYSTEM_ADVICE:</strong> Lexical saturation detected. Disregard emotive framing.
                 </div>
-            ` : "<strong>AUDIT_COMPLETE:</strong> No primary lexical triggers identified. Text maintains a baseline objective signal.";
+            ` : "<strong>AUDIT_COMPLETE:</strong> No primary lexical triggers identified.";
         }
     </script>
 </body>
