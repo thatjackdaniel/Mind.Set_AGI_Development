@@ -1,79 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind.Set | Axial Node</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #050505; color: white; font-family: sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; }
-        .tab-active { border-bottom: 2px solid #06b6d4; color: #06b6d4; opacity: 1; }
-        .hidden-tab { display: none; }
-    </style>
-</head>
-<body class="p-6 md:p-12 flex flex-col items-center min-h-screen text-center">
+<script>
+const BIAS_DB = {
+    geopolitical: ["unprovoked", "regime", "militant", "freedom fighter", "surgical strike", "collateral damage"],
+    corporate: ["synergy", "pivotal", "market-leading", "disruptive", "stakeholder", "alignment"],
+    emotional: ["outrageous", "shocking", "common sense", "everyone knows", "vicious"]
+};
 
-    <header class="mb-8">
-        <h1 class="text-5xl font-black tracking-tighter uppercase italic">Mind.Set</h1>
-        <p class="text-[9px] tracking-[0.6em] opacity-40 mt-3 uppercase text-cyan-500">Local Intelligence // Zero Handshake</p>
-    </header>
+function runLocalAudit() {
+    const input = document.getElementById("axial-input").value.toLowerCase();
+    const output = document.getElementById("axial-output");
+    let findings = [];
 
-    <nav class="flex space-x-8 mb-8 text-xs font-bold uppercase tracking-widest opacity-50">
-        <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 tab-active">The Forge</button>
-        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2">Axial Audit</button>
-    </nav>
+    // Audit Geopolitical Strands
+    BIAS_DB.geopolitical.forEach(word => {
+        if (input.includes(word)) findings.push(`[GEOPOLITICAL_SIGNAL]: "${word}"`);
+    });
 
-    <main class="glass p-8 max-w-2xl w-full text-left">
-        <div id="tab-forge" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center">Inquiry Node</h2>
-            <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
-                <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-cyan-500">
-                <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-cyan-500">
-                <textarea name="message" placeholder="MESSAGE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-32 outline-none focus:border-cyan-500"></textarea>
-                <button type="submit" class="w-full bg-white text-black font-black p-4 rounded-xl uppercase tracking-widest">Transmit</button>
-            </form>
-        </div>
+    // Audit Corporate Spin
+    BIAS_DB.corporate.forEach(word => {
+        if (input.includes(word)) findings.push(`[CORPORATE_SPIN]: "${word}"`);
+    });
 
-        <div id="tab-axial" class="tab-content hidden-tab">
-            <h2 class="text-xl font-bold mb-2 uppercase tracking-widest text-cyan-500 text-center">Axial Audit Engine</h2>
-            <p class="text-[10px] opacity-40 mb-6 uppercase italic text-center">Decentralized Lexical Analysis v1.0</p>
-            <textarea id="axial-input" placeholder="PASTE NEWS FEED..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-32 outline-none text-sm mb-4 focus:border-cyan-500"></textarea>
-            <button onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl uppercase tracking-widest text-sm hover:bg-cyan-500 hover:text-black transition-all">Execute Local Audit</button>
-            <div id="axial-output" class="mt-6 p-6 bg-black/40 border border-white/5 rounded-xl text-sm leading-relaxed whitespace-pre-wrap">SYSTEM_READY: Node is offline and sovereign.</div>
-        </div>
-    </main>
-
-    <script>
-        const BIAS_DB = {
-            "GEOPOLITICAL_LOAD": ["unprovoked", "regime", "militant", "freedom fighter", "collateral damage", "surgical strike", "proxy", "unconfirmed"],
-            "CORPORATE_SPIN": ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "market-leading", "robust", "value-added"],
-            "EMOTIONAL_ANCHOR": ["shocking", "outrage", "vicious", "everyone knows", "common sense", "slams", "blasts", "bombshell"]
-        };
-
-        function switchTab(t) {
-            document.getElementById('tab-forge').classList.toggle('hidden-tab', t !== 'forge');
-            document.getElementById('tab-axial').classList.toggle('hidden-tab', t !== 'axial');
-            document.getElementById('btn-forge').classList.toggle('tab-active', t === 'forge');
-            document.getElementById('btn-axial').classList.toggle('tab-active', t === 'axial');
-        }
-
-        function runLocalAudit() {
-            const text = document.getElementById("axial-input").value.toLowerCase();
-            const output = document.getElementById("axial-output");
-            if (!text) return;
-
-            let matches = [];
-            for (const [category, words] of Object.entries(BIAS_DB)) {
-                words.forEach(word => {
-                    if (text.includes(word)) matches.push(`<span class="text-cyan-500 font-bold">[${category}]</span>: "${word}"`);
-                });
-            }
-
-            output.innerHTML = matches.length > 0 
-                ? `<strong>AUDIT RESULTS:</strong><br><br>${matches.join('<br>')}<br><br><em>Analysis: Lexical signals suggest framed narrative. Proceed with high skepticism.</em>`
-                : "<strong>AUDIT COMPLETE:</strong> No major lexical bias anchors found in local database.";
-        }
-    </script>
-</body>
-</html>
+    if (findings.length > 0) {
+        output.innerHTML = "<strong>AUDIT COMPLETE: High Probability of Bias Detected.</strong><br><br>" + findings.join("<br>");
+    } else {
+        output.innerText = "NO IMMEDIATE LEXICAL SIGNALS DETECTED. PROCEED WITH CAUTION.";
+    }
+}
+</script>
