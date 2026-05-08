@@ -13,6 +13,7 @@
         .manifesto-body { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.9); }
         .section-line { border-bottom: 1px solid rgba(6, 182, 212, 0.2); margin: 2rem 0 1rem 0; padding-bottom: 0.5rem; color: #06b6d4; font-weight: bold; font-size: 0.8rem; letter-spacing: 0.2em; }
         .highlight { color: #06b6d4; font-weight: 900; }
+        .audit-tag { font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-right: 5px; text-transform: uppercase; }
         .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
     </style>
@@ -51,7 +52,7 @@
         </div>
 
         <div id="tab-contact" class="tab-content hidden-tab">
-            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Direct Inquiry</h2>
+            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Business Inquiry</h2>
             <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
                 <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none text-white text-sm">
                 <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none text-white text-sm">
@@ -64,9 +65,9 @@
             <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Axial Engine</h2>
             <div class="space-y-4">
                 <textarea id="axial-input" placeholder="PASTE DATA FOR NARRATIVE AUDIT..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-48 focus:border-cyan-500 outline-none text-sm text-white resize-none"></textarea>
-                <button onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl hover:bg-cyan-500 hover:text-black transition-all uppercase tracking-widest text-xs">Analyze String</button>
+                <button id="audit-btn" onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl hover:bg-cyan-500 hover:text-black transition-all uppercase tracking-widest text-xs">Run Audit</button>
                 <div id="axial-output" class="mt-6 p-4 bg-black/40 border border-white/5 rounded-xl text-sm leading-relaxed text-white/70 min-h-[100px]">
-                    <span class="opacity-30">SYSTEM_READY: Narrative audit node active.</span>
+                    <span class="opacity-30">SYSTEM_READY: Waiting for lexical string...</span>
                 </div>
             </div>
         </div>
@@ -74,9 +75,9 @@
 
     <script>
         const BIAS_DB = {
-            "GEOPOLITICAL": ["regime", "militant", "unprovoked", "freedom fighter", "proxy", "unconfirmed", "disinformation", "adversary", "malign"],
-            "CORPORATE": ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining"],
-            "EMOTIONAL": ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable"]
+            "GEOPOLITICAL": ["regime", "militant", "unprovoked", "freedom fighter", "proxy", "unconfirmed", "disinformation", "adversary", "malign", "regime-change", "unrest"],
+            "CORPORATE": ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining", "best-in-class"],
+            "EMOTIONAL": ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable", "chilling", "disturbing"]
         };
 
         function switchTab(t) {
@@ -92,32 +93,39 @@
         function runLocalAudit() {
             const inputField = document.getElementById("axial-input");
             const output = document.getElementById("axial-output");
+            const btn = document.getElementById("audit-btn");
             const text = inputField.value.toLowerCase();
             
             if (!text.trim()) {
-                output.innerHTML = "<span class='text-red-500 uppercase text-[10px]'>Error: No input detected.</span>";
+                output.innerHTML = "<span class='text-red-500 uppercase text-[10px]'>CRITICAL_ERROR: NO INPUT DETECTED.</span>";
                 return;
             }
 
-            output.innerHTML = "<span class='pulse text-cyan-500 uppercase text-[10px] tracking-widest font-bold'>Scanning Lexical Layers...</span>";
+            btn.innerText = "AUDITING...";
+            btn.classList.add("pulse");
+            output.innerHTML = "<span class='text-cyan-500 uppercase text-[10px] tracking-widest font-bold'>Processing Aletheian Layers...</span>";
 
-            // Artificial delay to feel like the Super-Mind is thinking
             setTimeout(() => {
                 let matches = [];
                 for (const [cat, words] of Object.entries(BIAS_DB)) {
                     words.forEach(w => { 
                         if (text.includes(w)) {
-                            matches.push(`<div class="mb-2"><span class="text-cyan-500 font-bold">[${cat}]</span>: <span class="italic text-white">"${w}"</span></div>`);
+                            matches.push(`<div class="mb-3 border-b border-white/5 pb-2"><span class="bg-cyan-900/50 text-cyan-400 audit-tag">${cat}</span> <span class="italic text-white">"${w}"</span></div>`);
                         }
                     });
                 }
 
+                btn.innerText = "Run Audit";
+                btn.classList.remove("pulse");
+
                 if (matches.length > 0) {
-                    output.innerHTML = `<div class="text-[10px] uppercase opacity-40 mb-4 tracking-[0.3em]">Audit Complete // Matches Found:</div>` + matches.join('') + `<p class="text-[10px] italic mt-6 opacity-50 text-center font-bold text-cyan-500">NARRATIVE PRIMING DETECTED. CROSS-REFERENCE WITH SHARD DATA.</p>`;
+                    output.innerHTML = `<div class="text-[10px] uppercase opacity-40 mb-4 tracking-[0.3em]">Detection Log:</div>` + 
+                    matches.join('') + 
+                    `<p class="text-[10px] italic mt-6 opacity-60 text-center font-bold text-cyan-500">LEXICAL SATURATION DETECTED. NARRATIVE IS MANIPULATED.</p>`;
                 } else {
-                    output.innerHTML = "<div class='text-center py-4'><span class='text-white font-bold opacity-80'>AUDIT_COMPLETE:</span><br><span class='text-[10px] opacity-40 uppercase'>No clinical triggers detected in the current string.</span></div>";
+                    output.innerHTML = "<div class='text-center py-4'><span class='text-white font-bold opacity-80'>AUDIT_COMPLETE:</span><br><span class='text-[10px] opacity-40 uppercase'>No clinical narrative triggers found. String is neutral.</span></div>";
                 }
-            }, 800);
+            }, 1200);
         }
     </script>
 </body>
