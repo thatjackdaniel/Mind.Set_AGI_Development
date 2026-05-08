@@ -19,27 +19,17 @@
 
     <header class="text-center mb-8">
         <h1 class="text-5xl font-black tracking-tighter uppercase italic leading-none">Mind.Set</h1>
-        <p class="text-[9px] tracking-[0.6em] opacity-40 mt-3 uppercase text-cyan-500">Sovereign Intelligence // Axial v2.1</p>
+        <p class="text-[9px] tracking-[0.6em] opacity-40 mt-3 uppercase text-cyan-500">Sovereign Intelligence // Axial v2.2</p>
     </header>
 
     <nav class="flex space-x-8 mb-8 text-xs font-bold uppercase tracking-widest opacity-50">
-        <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 tab-active transition-all">The Forge</button>
-        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2 transition-all">Axial Audit</button>
+        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2 tab-active transition-all">Axial Audit</button>
+        <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 transition-all">The Forge</button>
     </nav>
 
     <main class="glass p-8 max-w-2xl w-full">
         
-        <div id="tab-forge" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center text-sm">Direct Inquiry</h2>
-            <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
-                <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none">
-                <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none">
-                <textarea name="message" placeholder="DATA STRING" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-32 focus:border-cyan-500 outline-none resize-none"></textarea>
-                <button type="submit" class="w-full bg-white text-black font-black p-4 rounded-xl hover:bg-cyan-500 transition-all uppercase tracking-widest">Transmit</button>
-            </form>
-        </div>
-
-        <div id="tab-axial" class="tab-content hidden-tab">
+        <div id="tab-axial" class="tab-content">
             <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center text-sm">Lexical Audit Engine</h2>
             
             <div class="space-y-4">
@@ -47,29 +37,43 @@
                 <button onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl hover:bg-cyan-500 hover:text-black transition-all uppercase tracking-widest text-sm">Execute Audit</button>
                 
                 <div id="axial-output" class="mt-6 p-6 bg-black/40 border border-white/5 rounded-xl text-sm leading-relaxed text-white/80 min-h-[100px]">
-                    SYSTEM_READY: Passive monitoring active.
+                    SYSTEM_READY: Passive monitoring active. Offline mode enabled.
                 </div>
             </div>
         </div>
+
+        <div id="tab-forge" class="tab-content hidden-tab">
+            <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center text-sm">Direct Inquiry</h2>
+            <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
+                <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none">
+                <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none">
+                <textarea name="message" placeholder="MESSAGE STRING" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-32 focus:border-cyan-500 outline-none resize-none"></textarea>
+                <button type="submit" class="w-full bg-white text-black font-black p-4 rounded-xl hover:bg-cyan-500 transition-all uppercase tracking-widest">Transmit</button>
+            </form>
+        </div>
     </main>
+
+    <footer class="mt-12 opacity-20 text-[8px] tracking-[0.5em] uppercase text-center font-mono">
+        &copy; 2026 Mind.Set // Sovereign Ops
+    </footer>
 
     <script>
         const BIAS_DB = {
             "GEOPOLITICAL_FRAMING": {
-                words: ["regime", "militant", "unprovoked", "freedom fighter", "surgical strike", "proxy", "unconfirmed", "disinformation", "adversary"],
-                analysis: "This lexical strand is used to establish moral hierarchy. By categorizing actors as 'regimes' or 'militants' without legal definitions, the author bypasses objective reporting to enforce a specific geopolitical alignment."
+                words: ["regime", "militant", "unprovoked", "freedom fighter", "surgical strike", "proxy", "unconfirmed", "disinformation", "adversary", "malign"],
+                analysis: "This lexical strand establishes a moral hierarchy. Categorizing actors without legal definitions enforces a specific geopolitical alignment."
             },
             "CORPORATE_LINGUISTICS": {
-                words: ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining"],
-                analysis: "These terms function as semantic camouflage. They obscure mechanical or financial processes (like resource extraction or liquidation) behind a mask of professional 'growth' logic."
+                words: ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining", "fiscal"],
+                analysis: "Semantic camouflage identifying financial or mechanical processes hidden behind a mask of professional growth logic."
             },
             "EMOTIONAL_PRIMING": {
-                words: ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable"],
-                analysis: "High-entropy adjectives identified. These are designed to trigger the limbic system, forcing an emotional conclusion before the reader can process the actual data points."
+                words: ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable", "crisis"],
+                analysis: "High-intensity adjectives identified. Designed to trigger the limbic system, forcing emotional conclusions before data processing."
             },
             "AUTHORITY_VAGUENESS": {
-                words: ["experts say", "officials confirm", "studies show", "everyone knows", "unnamed sources", "well-placed", "leaked"],
-                analysis: "Anonymized authority appeals detected. This structure removes accountability from the claim, requiring the reader to trust a ghost-source rather than verifiable evidence."
+                words: ["experts say", "officials confirm", "studies show", "everyone knows", "unnamed sources", "well-placed", "leaked", "it is said"],
+                analysis: "Anonymized authority appeals. Removes accountability from the claim, shifting the burden of proof to unverified sources."
             }
         };
 
@@ -114,14 +118,14 @@
             const label = intensity > 5 ? "CRITICAL" : intensity > 2 ? "ELEVATED" : "STABLE";
             
             output.innerHTML = findingsHTML ? `
-                <div class="mb-6 border-b border-white/10 pb-2">
+                <div class="mb-6 border-b border-white/10 pb-2 text-center">
                     <h3 class="text-xs font-bold uppercase tracking-widest">Audit Result: <span class="text-cyan-500">${label}</span></h3>
                 </div>
                 ${findingsHTML}
-                <div class="mt-6 p-4 border border-cyan-900/50 rounded-xl text-[10px] opacity-60">
-                    <strong>SYSTEM_ADVICE:</strong> Lexical saturation suggests a curated narrative. Disregard adjectives and focus strictly on the sequence of events and verified entities.
+                <div class="mt-6 p-4 border border-cyan-900/50 rounded-xl text-[10px] opacity-60 text-center italic">
+                    <strong>SYSTEM_ADVICE:</strong> Lexical saturation detected. Disregard emotive framing and cross-reference with raw entity data.
                 </div>
-            ` : "<strong>AUDIT_COMPLETE:</strong> No identified lexical triggers. Text maintains a baseline signal-to-noise ratio.";
+            ` : "<strong>AUDIT_COMPLETE:</strong> No primary lexical triggers identified. Text maintains a baseline objective signal.";
         }
     </script>
 </body>
