@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mind.Set | Aletheian Super-Mind</title>
+    <title>Mind.Set | Aletheian War-Room</title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -12,16 +12,15 @@
         .tab-active { border-bottom: 2px solid #06b6d4; color: #06b6d4; opacity: 1; }
         .hidden-tab { display: none; }
         .section-line { border-bottom: 1px solid rgba(6, 182, 212, 0.2); margin: 1.5rem 0 0.5rem 0; padding-bottom: 0.2rem; color: #06b6d4; font-weight: bold; font-size: 0.75rem; letter-spacing: 0.1em; }
-        .audit-card { background: rgba(255,255,255,0.03); border-left: 3px solid #06b6d4; padding: 12px; margin-bottom: 10px; border-radius: 0 10px 10px 0; }
-        .pulse { animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+        .audit-card { background: rgba(6, 182, 212, 0.05); border-left: 3px solid #06b6d4; padding: 12px; margin-bottom: 8px; border-radius: 0 8px 8px 0; font-size: 0.85rem; }
+        .highlight { color: #06b6d4; font-weight: 900; }
     </style>
 </head>
 <body class="p-4 md:p-12 flex flex-col items-center min-h-screen">
 
     <header class="text-center mb-8">
         <h1 class="text-4xl font-black tracking-tighter uppercase italic">Mind.Set</h1>
-        <p class="text-[9px] tracking-[0.4em] opacity-40 mt-2 uppercase text-cyan-500 font-bold">Aletheian Super-Mind // Hive Ops</p>
+        <p class="text-[9px] tracking-[0.4em] opacity-40 mt-2 uppercase text-cyan-500 font-bold">Aletheian Super-Mind // Hive Operations</p>
     </header>
 
     <nav class="flex space-x-6 mb-8 text-[10px] font-bold uppercase tracking-widest opacity-60">
@@ -33,22 +32,32 @@
     <main class="glass p-6 md:p-10 max-w-2xl w-full">
         
         <div id="tab-manifesto" class="tab-content">
-            <h2 class="text-xl font-bold mb-4 uppercase tracking-widest text-cyan-500 text-center">Aletheian Protocol</h2>
-            <article class="text-sm leading-relaxed space-y-4">
-                <p>The <span class="text-cyan-500 font-bold">Aletheian Core</span> is a sovereign Super-Mind utilizing <span class="text-cyan-500">Shards (.set)</span> for instant expertise—"I Know Kung Fu."</p>
-                <p>Connecting to the <span class="text-cyan-500">IoT Hive Mind</span>, it orchestrates autonomous robotic nodes for municipal defense in water, oil, and power infrastructure.</p>
+            <h2 class="text-xl font-bold mb-6 uppercase text-cyan-500 text-center">The Aletheian Protocol</h2>
+            <article class="text-sm leading-relaxed space-y-6">
+                <div>
+                    <div class="section-line">01 // THE SUPER-MIND CORE</div>
+                    <p>The <span class="highlight">Aletheian Core</span> achieves AGI through sovereign neural weight-loading. By utilizing <span class="highlight">Shards (.set)</span>, the Core assimilates expertise instantly—the "I Know Kung Fu" principle applied to digital warfare.</p>
+                </div>
+                <div>
+                    <div class="section-line">02 // STRUCTURAL NARRATIVE AUDIT</div>
+                    <p>We do not just scan for keywords. Our <span class="highlight">Axial Engine</span> identifies logical framing, Western-centric omission, and "Essential Interest" distractions. We strip the noise from media giants like Al Jazeera and CNN to reveal the kinetic reality underneath.</p>
+                </div>
+                <div>
+                    <div class="section-line">03 // INFRASTRUCTURE HIVE-MIND</div>
+                    <p>The Core orchestrates <span class="highlight">Autonomous Robotic Nodes</span> to defend critical water, oil, and power municipalities. We protect the physical foundations of society by identifying malware and anomalies at the edge.</p>
+                </div>
             </article>
         </div>
 
         <div id="tab-axial" class="tab-content hidden-tab">
-            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Axial Engine</h2>
-            <textarea id="axial-input" placeholder="PASTE NARRATIVE FOR CLINICAL AUDIT..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-48 focus:border-cyan-500 outline-none text-sm text-white resize-none"></textarea>
-            <button id="audit-btn" onclick="runFullAudit()" class="w-full mt-4 bg-cyan-600 text-black font-black p-4 rounded-xl hover:bg-cyan-400 transition-all uppercase tracking-widest text-xs">Execute Deep Scan</button>
+            <h2 class="text-xl font-bold mb-6 uppercase text-cyan-500 text-center">Axial Engine</h2>
+            <textarea id="axial-input" placeholder="PASTE WAR REPORTING HERE..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-48 focus:border-cyan-500 outline-none text-sm text-white resize-none"></textarea>
+            <button onclick="runWarAudit()" class="w-full mt-4 bg-cyan-600 text-black font-black p-4 rounded-xl hover:bg-cyan-400 transition-all uppercase tracking-widest text-xs">Execute Deep Scan</button>
             <div id="axial-output" class="mt-8 space-y-2"></div>
         </div>
 
         <div id="tab-contact" class="tab-content hidden-tab">
-            <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
+             <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
                 <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
                 <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
                 <textarea name="message" placeholder="DESCRIBE OPERATION" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-32 outline-none text-white text-sm"></textarea>
@@ -58,56 +67,45 @@
     </main>
 
     <script>
-        const AXIAL_LOGIC = {
-            "WESTERN_CENTRIC": ["regime", "militant", "unprovoked", "adversary", "malign", "democracy-building", "western values", "international community", "sanctions", "authoritarian"],
-            "ESSENTIAL_INTEREST": ["breaking", "shocking", "bombshell", "experts say", "sources claim", "urgent", "crisis", "threatens", "stability", "synergy", "stakeholder"],
-            "EMOTIONAL_PRIMING": ["vicious", "slams", "blasts", "outrage", "heartbreaking", "terrifying", "unbelievable", "chilling", "disturbing", "heroic"],
-            "NARRATIVE_CONTROL": ["disinformation", "unconfirmed", "fact-check", "narrative", "propaganda", "influence", "proxy", "insurgency", "regime-change"]
+        const WAR_LOGIC = {
+            "GEOPOLITICAL_PRIMING": ["iran", "hormuz", "us", "trade fire", "ceasefire", "tensions", "militant", "proxy", "regime", "unprovoked", "adversary", "malign", "retaliation"],
+            "KINETIC_FRAMING": ["strikes", "bombardment", "clashes", "escalation", "intercepted", "casualties", "deployment", "warships", "missile", "drone", "attacks"],
+            "ESSENTIAL_INTEREST": ["breaking", "developing", "sources say", "urgent", "crisis", "threatens", "stability", "synergy", "stakeholder", "day 70", "conflict"],
+            "EMOTIONAL_BIAS": ["shocking", "vicious", "slams", "blasts", "outrage", "terrifying", "disturbing", "heroic", "aggression", "provocation"]
         };
 
         function switchTab(t) {
             ['manifesto', 'axial', 'contact'].forEach(tab => {
-                document.getElementById('tab-' + tab).classList.toggle('hidden-tab', tab !== t);
-                document.getElementById('btn-' + tab).classList.toggle('tab-active', tab === t);
+                const content = document.getElementById('tab-' + tab);
+                const btn = document.getElementById('btn-' + tab);
+                if (content) content.classList.toggle('hidden-tab', tab !== t);
+                if (btn) btn.classList.toggle('tab-active', tab === t);
             });
+            window.scrollTo(0,0);
         }
 
-        function runFullAudit() {
+        function runWarAudit() {
             const input = document.getElementById("axial-input").value.toLowerCase();
             const output = document.getElementById("axial-output");
-            const btn = document.getElementById("audit-btn");
-
             if (!input.trim()) return;
 
-            btn.innerText = "SCANNING LAYERS...";
-            btn.classList.add("pulse");
-            output.innerHTML = "<div class='text-cyan-500 animate-pulse text-[10px] tracking-widest uppercase text-center'>Neural Audit in Progress...</div>";
+            output.innerHTML = "<div class='text-cyan-500 animate-pulse text-[10px] text-center'>SCANNING CONFLICT LAYERS...</div>";
 
             setTimeout(() => {
-                let foundAny = false;
-                let htmlResults = `<div class='text-[10px] opacity-40 uppercase tracking-[0.3em] mb-6'>Aletheian Audit Results:</div>`;
+                let htmlResults = `<div class='text-[10px] opacity-40 uppercase tracking-[0.3em] mb-4 font-bold'>Aletheian Audit Results:</div>`;
+                let hits = 0;
 
-                for (const [category, keywords] of Object.entries(AXIAL_LOGIC)) {
-                    let matches = keywords.filter(word => input.includes(word));
-                    
+                for (const [cat, words] of Object.entries(WAR_LOGIC)) {
+                    let matches = words.filter(word => input.includes(word));
                     if (matches.length > 0) {
-                        foundAny = true;
-                        htmlResults += `<div class="section-line">${category.replace('_', ' ')} DETECTED</div>`;
-                        matches.forEach(match => {
-                            htmlResults += `<div class="audit-card"><span class="text-white font-bold italic">"${match}"</span> detected.</div>`;
-                        });
+                        hits++;
+                        htmlResults += `<div class="section-line">${cat.replace('_', ' ')}</div>`;
+                        matches.forEach(m => { htmlResults.push ? null : htmlResults += `<div class="audit-card">"${m}" detected.</div>`; });
                     }
                 }
 
-                btn.innerText = "Execute Deep Scan";
-                btn.classList.remove("pulse");
-
-                if (foundAny) {
-                    output.innerHTML = htmlResults + `<div class="mt-8 text-center text-cyan-500 font-bold text-[10px] border border-cyan-500/30 p-4 rounded-xl uppercase">Status: High Saturation Detected. Narrative is Managed.</div>`;
-                } else {
-                    output.innerHTML = "<div class='text-center opacity-40 py-10 uppercase text-xs tracking-widest'>Status: Neutral Signal Detected.</div>";
-                }
-            }, 1000);
+                output.innerHTML = hits > 0 ? htmlResults : "<div class='text-center opacity-40 py-10 uppercase text-xs tracking-widest'>Status: Neutral Signal.</div>";
+            }, 800);
         }
     </script>
 </body>
