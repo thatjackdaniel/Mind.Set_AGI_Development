@@ -2,159 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIND.SET | AXIAL AUDIT ENGINE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mind.Set | Aletheian Super-Mind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --neon-green: #00ff41;
-            --dark-bg: #0a0a0a;
-            --panel-bg: #141414;
-            --text-gray: #a0a0a0;
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: var(--neon-green);
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        header {
-            padding: 20px;
-            border-bottom: 1px solid #333;
-            text-align: center;
-            letter-spacing: 5px;
-        }
-
-        .container {
-            display: flex;
-            flex: 1;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        .panel {
-            background: var(--panel-bg);
-            border: 1px solid #333;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        #axial-terminal {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #business-node {
-            flex: 1;
-            border-left: 1px solid var(--neon-green);
-        }
-
-        .status-bar {
-            background: #000;
-            padding: 5px 15px;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #333;
-        }
-
-        input, button {
-            background: transparent;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 10px;
-            margin-top: 10px;
-            font-family: inherit;
-        }
-
-        button:hover {
-            background: var(--neon-green);
-            color: black;
-            cursor: pointer;
-        }
-
-        .hidden { display: none; }
+        body { background-color: #050505; color: #d1d5db; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; -webkit-text-size-adjust: 100%; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; }
+        .tab-active { border-bottom: 2px solid #06b6d4; color: #06b6d4; opacity: 1; }
+        .hidden-tab { display: none; }
+        .manifesto-body { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.9); }
+        .section-line { border-bottom: 1px solid rgba(6, 182, 212, 0.2); margin: 2rem 0 1rem 0; padding-bottom: 0.5rem; color: #06b6d4; font-weight: bold; font-size: 0.8rem; letter-spacing: 0.2em; }
+        .highlight { color: #06b6d4; font-weight: 900; }
+        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-12 flex flex-col items-center min-h-screen">
 
-<header>
-    <h1>MIND.SET // AXIAL</h1>
-</header>
+    <header class="text-center mb-8">
+        <h1 class="text-4xl font-black tracking-tighter uppercase italic leading-none">Mind.Set</h1>
+        <p class="text-[9px] tracking-[0.5em] opacity-40 mt-3 uppercase text-cyan-500 font-bold">Aletheian Super-Mind // Hive Operations</p>
+    </header>
 
-<div class="container">
-    <section id="axial-terminal" class="panel">
-        <h3>HEURISTIC NARRATIVE AUDIT</h3>
-        <div id="output" style="flex: 1; color: var(--text-gray);">
-            [SYSTEM READY... STANDING BY FOR INPUT]
+    <nav class="flex space-x-8 mb-8 text-[10px] font-bold uppercase tracking-widest opacity-60">
+        <button id="btn-manifesto" onclick="switchTab('manifesto')" class="pb-2 tab-active transition-all">Manifesto</button>
+        <button id="btn-contact" onclick="switchTab('contact')" class="pb-2 transition-all">Contact</button>
+        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2 transition-all">Axial Audit</button>
+    </nav>
+
+    <main class="glass p-6 md:p-10 max-w-2xl w-full">
+        
+        <div id="tab-manifesto" class="tab-content">
+            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Aletheian Intelligence Protocol</h2>
+            <article class="manifesto-body">
+                <div class="section-line">01 // THE SUPER-MIND CORE</div>
+                <p>Mind.Set is the architect of the <span class="highlight">Aletheian Core</span>—a sovereign Super-Mind that doesn't just process data; it assimilates expertise. Inspired by the "I Know Kung Fu" principle, the Core utilizes high-density <span class="highlight">Aletheian Shards (.set)</span> to achieve instant domain mastery.</p>
+                
+                <div class="section-line">02 // HIVE-MIND & ROBOTIC NODES</div>
+                <p>The Core functions as the <span class="highlight">Hive Mind</span> for a decentralized robotic workforce. It connects directly to your entire IoT grid, assuming command of autonomous nodes to perform complex kinetic tasks. We have bridged the gap between digital thought and physical execution.</p>
+
+                <div class="section-line">03 // MUNICIPAL INFRASTRUCTURE SHIELD</div>
+                <p>We provide a specialized defense layer for critical <span class="highlight">Water, Oil, and Power Municipalities</span>. By auditing infrastructure at the edge, the Core detects and neutralizes malware that bypasses legacy security. Our AGI doesn't just monitor the grid; it takes over and defends it.</p>
+
+                <footer class="mt-12 pt-8 opacity-20 text-[8px] tracking-[0.5em] uppercase text-center font-mono">
+                    Sovereign AGI // Neo-Logic // San Antonio Node
+                </footer>
+            </article>
         </div>
-        <input type="text" id="audit-input" placeholder="Enter narrative string for analysis...">
-        <button onclick="runAudit()">RUN AXIAL AUDIT</button>
-    </section>
 
-    <section id="business-node" class="panel">
-        <h3>INFRASTRUCTURE DEFENSE</h3>
-        <p style="font-size: 0.9rem; color: var(--text-gray);">Contact for sovereign system integration or deployment queries.</p>
-        <form id="contact-form">
-            <input type="text" placeholder="Identity" style="width: 90%;">
-            <input type="email" placeholder="Secure Email" style="width: 90%;">
-            <textarea placeholder="Inquiry Details" style="width: 90%; background: transparent; border: 1px solid var(--neon-green); color: var(--neon-green); margin-top: 10px; height: 100px; font-family: inherit;"></textarea>
-            <button type="button" style="width: 96%;">SUBMIT INQUIRY</button>
-        </form>
-    </section>
-</div>
+        <div id="tab-contact" class="tab-content hidden-tab">
+            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Direct Inquiry</h2>
+            <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
+                <input type="text" name="name" placeholder="IDENTIFIER" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none text-white text-sm">
+                <input type="email" name="email" placeholder="RETURN_NODE" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-cyan-500 outline-none text-white text-sm">
+                <textarea name="message" placeholder="DESCRIBE OPERATION / INFRASTRUCTURE TARGET" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-40 focus:border-cyan-500 outline-none resize-none text-white text-sm"></textarea>
+                <button type="submit" class="w-full bg-white text-black font-black p-4 rounded-xl hover:bg-cyan-500 transition-all uppercase tracking-widest text-xs">Transmit</button>
+            </form>
+        </div>
 
-<div class="status-bar">
-    <div>SYSTEM_STATUS: <span id="status-display">INITIALIZING...</span></div>
-    <div>NODE_LOCATION: SAN ANTONIO, TX</div>
-</div>
+        <div id="tab-axial" class="tab-content hidden-tab">
+            <h2 class="text-xl font-bold mb-6 uppercase tracking-widest text-cyan-500 text-center">Axial Engine</h2>
+            <div class="space-y-4">
+                <textarea id="axial-input" placeholder="PASTE DATA FOR NARRATIVE AUDIT..." class="w-full bg-white/5 border border-white/10 p-4 rounded-xl h-48 focus:border-cyan-500 outline-none text-sm text-white resize-none"></textarea>
+                <button onclick="runLocalAudit()" class="w-full border border-cyan-500 text-cyan-500 font-bold p-4 rounded-xl hover:bg-cyan-500 hover:text-black transition-all uppercase tracking-widest text-xs">Analyze String</button>
+                <div id="axial-output" class="mt-6 p-4 bg-black/40 border border-white/5 rounded-xl text-sm leading-relaxed text-white/70 min-h-[100px]">
+                    <span class="opacity-30">SYSTEM_READY: Narrative audit node active.</span>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<script>
-    // THE FIX: Auto-Bridge for Public/Local Environments
-    const API_KEY = "REPLACED_FOR_SECURITY"; // Secure this in your console!
+    <script>
+        const BIAS_DB = {
+            "GEOPOLITICAL": ["regime", "militant", "unprovoked", "freedom fighter", "proxy", "unconfirmed", "disinformation", "adversary", "malign"],
+            "CORPORATE": ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "value-added", "streamlining"],
+            "EMOTIONAL": ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying", "unbelievable"]
+        };
 
-    window.onload = function() {
-        const status = document.getElementById('status-display');
-        const output = document.getElementById('output');
-        
-        // Detect environment
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
-        if (isLocal) {
-            status.innerText = "LOCAL SYSTEM ACTIVE";
-            status.style.color = "#00ff41";
-            console.log("Axial: Local dev node engaged.");
-        } else {
-            // Public "Safety Net"
-            status.innerText = "SOVEREIGN NODE: ONLINE (DEMO)";
-            status.style.color = "#00ff41";
-            output.innerHTML += "<br>> Remote access detected.<br>> Initializing public-facing heuristic sandbox...<br>> Ready.";
+        function switchTab(t) {
+            ['manifesto', 'contact', 'axial'].forEach(tab => {
+                const tabEl = document.getElementById('tab-' + tab);
+                const btnEl = document.getElementById('btn-' + tab);
+                if (tabEl) tabEl.classList.toggle('hidden-tab', tab !== t);
+                if (btnEl) btnEl.classList.toggle('tab-active', tab === t);
+            });
+            window.scrollTo(0,0);
         }
-    };
 
-    function runAudit() {
-        const input = document.getElementById('audit-input').value;
-        const output = document.getElementById('output');
+        function runLocalAudit() {
+            const inputField = document.getElementById("axial-input");
+            const output = document.getElementById("axial-output");
+            const text = inputField.value.toLowerCase();
+            
+            if (!text.trim()) {
+                output.innerHTML = "<span class='text-red-500 uppercase text-[10px]'>Error: No input detected.</span>";
+                return;
+            }
 
-        if (!input) return;
+            output.innerHTML = "<span class='pulse text-cyan-500 uppercase text-[10px] tracking-widest font-bold'>Scanning Lexical Layers...</span>";
 
-        output.innerHTML += `<br><br><span style="color:white;">[USER]: ${input}</span>`;
-        output.innerHTML += `<br>> Analyzing narrative weights...`;
-        
-        // Simulated Axial Logic for Public Users
-        setTimeout(() => {
-            output.innerHTML += `<br>> <span style="color:var(--neon-green);">[RESULT]: Heuristic integrity confirmed. No mechanical clichés detected.</span>`;
-            document.getElementById('audit-input').value = "";
-            output.scrollTop = output.scrollHeight;
-        }, 1000);
-    }
-</script>
+            // Artificial delay to feel like the Super-Mind is thinking
+            setTimeout(() => {
+                let matches = [];
+                for (const [cat, words] of Object.entries(BIAS_DB)) {
+                    words.forEach(w => { 
+                        if (text.includes(w)) {
+                            matches.push(`<div class="mb-2"><span class="text-cyan-500 font-bold">[${cat}]</span>: <span class="italic text-white">"${w}"</span></div>`);
+                        }
+                    });
+                }
 
+                if (matches.length > 0) {
+                    output.innerHTML = `<div class="text-[10px] uppercase opacity-40 mb-4 tracking-[0.3em]">Audit Complete // Matches Found:</div>` + matches.join('') + `<p class="text-[10px] italic mt-6 opacity-50 text-center font-bold text-cyan-500">NARRATIVE PRIMING DETECTED. CROSS-REFERENCE WITH SHARD DATA.</p>`;
+                } else {
+                    output.innerHTML = "<div class='text-center py-4'><span class='text-white font-bold opacity-80'>AUDIT_COMPLETE:</span><br><span class='text-[10px] opacity-40 uppercase'>No clinical triggers detected in the current string.</span></div>";
+                }
+            }, 800);
+        }
+    </script>
 </body>
 </html>
