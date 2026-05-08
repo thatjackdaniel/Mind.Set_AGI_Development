@@ -1,29 +1,70 @@
 <script>
-const BIAS_DB = {
-    geopolitical: ["unprovoked", "regime", "militant", "freedom fighter", "surgical strike", "collateral damage"],
-    corporate: ["synergy", "pivotal", "market-leading", "disruptive", "stakeholder", "alignment"],
-    emotional: ["outrageous", "shocking", "common sense", "everyone knows", "vicious"]
-};
+    // THE EXPANDED LEXICAL DATABASE
+    const BIAS_DB = {
+        "GEOPOLITICAL_FRAMING": {
+            words: ["regime", "militant", "unprovoked", "freedom fighter", "surgical strike", "proxy", "unconfirmed", "disinformation"],
+            description: "Narrative framing used to designate 'Enemy' vs 'Ally' without objective evidence."
+        },
+        "CORPORATE_MASKING": {
+            words: ["synergy", "stakeholder", "disruptive", "pivotal", "alignment", "robust", "optimization", "downsizing"],
+            description: "Euphemisms designed to sanitize financial extraction or workforce reduction."
+        },
+        "EMOTIONAL_MANIPULATION": {
+            words: ["shocking", "outrage", "vicious", "slams", "blasts", "bombshell", "common sense", "terrifying"],
+            description: "High-intensity adjectives used to bypass logical reasoning and trigger a limbic response."
+        },
+        "AUTHORITY_APPEALS": {
+            words: ["experts say", "officials confirm", "studies show", "everyone knows", "unnamed sources"],
+            description: "Vague appeals to authority used to bypass the need for direct citation or proof."
+        }
+    };
 
-function runLocalAudit() {
-    const input = document.getElementById("axial-input").value.toLowerCase();
-    const output = document.getElementById("axial-output");
-    let findings = [];
-
-    // Audit Geopolitical Strands
-    BIAS_DB.geopolitical.forEach(word => {
-        if (input.includes(word)) findings.push(`[GEOPOLITICAL_SIGNAL]: "${word}"`);
-    });
-
-    // Audit Corporate Spin
-    BIAS_DB.corporate.forEach(word => {
-        if (input.includes(word)) findings.push(`[CORPORATE_SPIN]: "${word}"`);
-    });
-
-    if (findings.length > 0) {
-        output.innerHTML = "<strong>AUDIT COMPLETE: High Probability of Bias Detected.</strong><br><br>" + findings.join("<br>");
-    } else {
-        output.innerText = "NO IMMEDIATE LEXICAL SIGNALS DETECTED. PROCEED WITH CAUTION.";
+    function switchTab(t) {
+        document.getElementById('tab-forge').classList.toggle('hidden-tab', t !== 'forge');
+        document.getElementById('tab-axial').classList.toggle('hidden-tab', t !== 'axial');
+        document.getElementById('btn-forge').classList.toggle('tab-active', t === 'forge');
+        document.getElementById('btn-axial').classList.toggle('tab-active', t === 'axial');
     }
-}
+
+    function runLocalAudit() {
+        const text = document.getElementById("axial-input").value.toLowerCase();
+        const output = document.getElementById("axial-output");
+        if (!text) return;
+
+        let findings = "";
+        let intensityScore = 0;
+        let categoriesFound = new Set();
+
+        // RUN THE ANALYTIC LOOP
+        for (const [category, data] of Object.entries(BIAS_DB)) {
+            let matches = data.words.filter(word => text.includes(word));
+            
+            if (matches.length > 0) {
+                intensityScore += matches.length;
+                categoriesFound.add(category);
+                findings += `
+                    <div class="mb-4">
+                        <span class="text-cyan-500 font-bold tracking-widest text-[10px]">[${category}]</span>
+                        <p class="text-white/90 text-xs mt-1 italic">"${matches.join(', ')}"</p>
+                        <p class="text-white/40 text-[10px] leading-tight mt-1">${data.description}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // GENERATE ELABORATED SUMMARY
+        const intensityLabel = intensityScore > 5 ? "CRITICAL" : intensityScore > 2 ? "ELEVATED" : "MODERATE";
+        
+        output.innerHTML = findings ? `
+            <div class="border-b border-white/10 pb-4 mb-4">
+                <h3 class="text-sm font-bold uppercase">Audit Summary: ${intensityLabel}</h3>
+                <p class="text-[10px] text-white/50 italic">Total Lexical Flags: ${intensityScore} // Vectors Detected: ${categoriesFound.size}</p>
+            </div>
+            ${findings}
+            <div class="mt-4 p-3 bg-white/5 border border-cyan-500/30 rounded-lg text-[10px]">
+                <strong>STRATEGIC ADVICE:</strong> The text utilizes ${intensityLabel.toLowerCase()} lexical framing. 
+                Focus on the missing data points—specifically, who benefits from this narrative and what primary sources were omitted.
+            </div>
+        ` : "<strong>AUDIT COMPLETE:</strong> No clinical lexical anchors detected. The text appears to maintain a baseline objective stance.";
+    }
 </script>
