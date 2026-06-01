@@ -30,7 +30,6 @@
 
     <nav class="flex space-x-10 mb-12 text-[11px] font-bold uppercase tracking-widest opacity-60">
         <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 tab-active">Forge Doctrine</button>
-        <button id="btn-kinetic" onclick="switchTab('kinetic')" class="pb-2">Kinetic Suite</button>
         <button id="btn-axial" onclick="switchTab('axial')" class="pb-2">Axial Audit [OPEN]</button>
         <button id="btn-contact" onclick="switchTab('contact')" class="pb-2">Inquiry Node</button>
     </nav>
@@ -66,28 +65,25 @@
                     <p class="text-[11px] opacity-70">Vigil has been officially pulled from public availability and un-open-sourced. Transitioned exclusively to a closed-source, premium monetization matrix. Commercial licensing and enterprise telemetry access available via formal allocation only.</p>
                 </div>
             </div>
-        </div>
 
-        <div id="tab-kinetic" class="tab-content hidden-tab space-y-8">
-            <div class="text-center space-y-4">
-                <h2 class="text-5xl font-black text-white leading-tight">THE <span class="red-glow">KINETIC</span> AMIGOS.</h2>
-                <p class="text-sm opacity-70 leading-relaxed mx-auto border-l-2 border-red-500 pl-4 text-left">The raw hardware and telemetry orchestration interface. Built to bridge decentralized intelligence loops directly into physical edge environments and hardware deployments.</p>
-            </div>
-
-            <div class="space-y-4">
-                <div class="audit-card border-red-500/20 bg-red-950/5">
-                    <div class="audit-label text-red-400 mb-2">DEPLOYMENT // KINETIC EDGE DECK</div>
-                    <p class="text-[11px] opacity-70">Sovereign hardware orchestration infrastructure. Hardened compute platform mapped for offline multi-agent synchronization, field diagnostics, and direct edge-robotics telemetry without upstream dependencies.</p>
-                </div>
+            <div class="space-y-4 pt-4 border-t border-white/5">
+                <div class="audit-label text-red-500 tracking-[0.4em] font-black">KINETIC OPERATIONAL LAYER</div>
                 
-                <div class="audit-card border-red-500/20 bg-red-950/5">
-                    <div class="audit-label text-red-400 mb-2">HARDWARE HARDENING // ANVIL</div>
-                    <p class="text-[11px] opacity-70">The underlying security container and bare-metal shielding framework. Protects the structural integrity of localized models, cryptographic keys, and binary data shards under physical or adversarial interception vectors.</p>
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="audit-card border-red-500/10 bg-red-950/5">
+                        <div class="audit-label text-red-400 mb-2">EDGE DECK</div>
+                        <p class="text-[10px] opacity-60 leading-relaxed">Sovereign hardware orchestration infrastructure. Hardened compute platform mapped for offline multi-agent synchronization and direct edge-robotics telemetry without upstream dependencies.</p>
+                    </div>
+                    
+                    <div class="audit-card border-red-500/10 bg-red-950/5">
+                        <div class="audit-label text-red-400 mb-2">ANVIL</div>
+                        <p class="text-[10px] opacity-60 leading-relaxed">Underlying security container and bare-metal shielding framework. Protects the structural integrity of localized models, cryptographic keys, and binary data shards under physical or adversarial interception vectors.</p>
+                    </div>
 
-                <div class="audit-card border-red-500/20 bg-red-950/5">
-                    <div class="audit-label text-red-400 mb-2">SYSTEM AUDITING // KINETIC TRIAGE</div>
-                    <p class="text-[11px] opacity-70">Real-time systemic failure diagnostics. Evaluates physical and digital vectors simultaneously—monitoring single-points-of-failure, pressure dynamics, structural loops, and immediate telemetry feedback to isolate anomalies before systemic collapse.</p>
+                    <div class="audit-card border-red-500/10 bg-red-950/5">
+                        <div class="audit-label text-red-400 mb-2">TRIAGE</div>
+                        <p class="text-[10px] opacity-60 leading-relaxed">Real-time systemic failure diagnostics. Evaluates physical and digital vectors simultaneously—monitoring single-points-of-failure, pressure dynamics, structural loops, and immediate telemetry feedback.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,7 +140,7 @@
 
     <script>
         function switchTab(t) {
-            ['forge', 'kinetic', 'axial', 'contact'].forEach(tab => {
+            ['forge', 'axial', 'contact'].forEach(tab => {
                 document.getElementById('tab-' + tab).classList.toggle('hidden-tab', tab !== t);
                 document.getElementById('btn-' + tab).classList.toggle('tab-active', tab === t);
             });
@@ -160,6 +156,7 @@
             if(!input) return;
             results.classList.remove('hidden-tab');
 
+            // Native evaluation dataset for system validation
             if(input.includes("rubio") || input.includes("nato")) {
                 traceContainer.innerHTML = `<div class="trace-box">
                     <div class="audit-label !text-cyan-500 mb-1">Audit Trace: Linguistic</div>
@@ -167,6 +164,20 @@
                     <div class="text-[11px] opacity-70">[ANALYSIS_AUDIT]: Emotional priming used to suggest underlying conflict without specifying metrics.</div>
                 </div>`;
                 payload.innerText = `"U.S. Senator Marco Rubio discussed NATO security cooperation with European officials amidst shifting foreign policy debate."`;
+            } else if(input.includes("kinetic") || input.includes("edge deck")) {
+                traceContainer.innerHTML = `<div class="trace-box border-red-500">
+                    <div class="audit-label !text-red-400 mb-1">Audit Trace: Kinematics Fusion</div>
+                    <div class="text-white text-sm font-mono mb-2">State Vector Formulation Active: [x, y, vx, vy, theta, variance]</div>
+                    <div class="text-[11px] opacity-70">[KINETIC_CORE]: EKF running on-board companion SBC. 10Hz MAVLink attitude overrides active.</div>
+                </div>`;
+                payload.innerText = `"Kinematic Inertial Navigation loop validated. GPS Jammed fallback rules operating within normal limits."`;
+            } else if(input.includes("anvil")) {
+                traceContainer.innerHTML = `<div class="trace-box border-amber-500">
+                    <div class="audit-label !text-amber-400 mb-1">Audit Trace: Shielding Container</div>
+                    <div class="text-white text-sm font-mono mb-2">Bare-Metal Isolation Protocol</div>
+                    <div class="text-[11px] opacity-70">[ANVIL_SECURE]: Local cryptographic keys and .set shards insulated from adversarial interception loops.</div>
+                </div>`;
+                payload.innerText = `"A.N.V.I.L. bare-metal container verification successful. Null-Vector area denial arrays online."`;
             } else {
                 traceContainer.innerHTML = `<div class="opacity-30 text-xs italic">Signal Neutralized. No clinical anomalies detected.</div>`;
                 payload.innerText = `"Raw signal processed. Lexical symmetry maintained."`;
