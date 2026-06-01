@@ -11,6 +11,7 @@
         .glass { background: rgba(10, 20, 30, 0.6); backdrop-filter: blur(25px); border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 24px; }
         .cyan-glow { color: #06b6d4; text-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
         .amber-glow { color: #f59e0b; text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
+        .red-glow { color: #ef4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
         .audit-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 18px; }
         .hidden-tab { display: none; }
         .tab-active { border-bottom: 2px solid #06b6d4; color: #06b6d4; font-weight: 900; }
@@ -29,7 +30,8 @@
 
     <nav class="flex space-x-10 mb-12 text-[11px] font-bold uppercase tracking-widest opacity-60">
         <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 tab-active">Forge Doctrine</button>
-        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2">Axial Audit [OPEN SOURCE]</button>
+        <button id="btn-kinetic" onclick="switchTab('kinetic')" class="pb-2">Kinetic Suite</button>
+        <button id="btn-axial" onclick="switchTab('axial')" class="pb-2">Axial Audit [OPEN]</button>
         <button id="btn-contact" onclick="switchTab('contact')" class="pb-2">Inquiry Node</button>
     </nav>
 
@@ -39,7 +41,7 @@
             <div class="text-center space-y-6">
                 <blockquote class="text-xs italic opacity-50 tracking-wide">"To freedom and elegance we forge our path bravely; windswept and chapped we must move on."</blockquote>
                 <h2 class="text-5xl font-black text-white leading-tight">THE <span class="cyan-glow">FORGE.</span></h2>
-                <p class="text-sm opacity-70 leading-relaxed mx-auto border-l-2 border-cyan-500 pl-4 text-left">Mind.Set is a vertically integrated, decentralized AGI suite built on PLEXUS and Strema for high-stakes, low-connectivity environments. We prioritize <span class="text-white font-bold">Sovereign Architecture</span>—ensuring intelligence remains localized, impartial, and persistent at the edge.</p>
+                <p class="text-sm opacity-70 leading-relaxed mx-auto border-l-2 border-cyan-500 pl-4 text-left">Mind.Set is a vertically integrated, decentralized AGI suite engineered on PLEXUS and Strema for high-stakes, low-connectivity environments. We prioritize <span class="text-white font-bold">Sovereign Architecture</span>—ensuring intelligence remains localized, impartial, and persistent at the edge.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -60,8 +62,32 @@
                     <p class="text-[11px] opacity-60">Neural synthesis engine. Secure, client-side voice interaction executing completely offline without data transmission.</p>
                 </div>
                 <div class="audit-card md:col-span-2 border-amber-500/20 bg-amber-950/5">
-                    <div class="audit-label mb-2 text-amber-500">PROPRIETARY NOTICE // VIGIL [COMMERCIAL STATUS]</div>
+                    <div class="audit-label mb-2 text-amber-500">PROPRIETARY NOTICE // VIGIL [CLOSED SOURCE]</div>
                     <p class="text-[11px] opacity-70">Vigil has been officially pulled from public availability and un-open-sourced. Transitioned exclusively to a closed-source, premium monetization matrix. Commercial licensing and enterprise telemetry access available via formal allocation only.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-kinetic" class="tab-content hidden-tab space-y-8">
+            <div class="text-center space-y-4">
+                <h2 class="text-5xl font-black text-white leading-tight">THE <span class="red-glow">KINETIC</span> AMIGOS.</h2>
+                <p class="text-sm opacity-70 leading-relaxed mx-auto border-l-2 border-red-500 pl-4 text-left">The raw hardware and telemetry orchestration interface. Built to bridge decentralized intelligence loops directly into physical edge environments and hardware deployments.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="audit-card border-red-500/20 bg-red-950/5">
+                    <div class="audit-label text-red-400 mb-2">DEPLOYMENT // KINETIC EDGE DECK</div>
+                    <p class="text-[11px] opacity-70">Sovereign hardware orchestration infrastructure. Hardened compute platform mapped for offline multi-agent synchronization, field diagnostics, and direct edge-robotics telemetry without upstream dependencies.</p>
+                </div>
+                
+                <div class="audit-card border-red-500/20 bg-red-950/5">
+                    <div class="audit-label text-red-400 mb-2">HARDWARE HARDENING // ANVIL</div>
+                    <p class="text-[11px] opacity-70">The underlying security container and bare-metal shielding framework. Protects the structural integrity of localized models, cryptographic keys, and binary data shards under physical or adversarial interception vectors.</p>
+                </div>
+
+                <div class="audit-card border-red-500/20 bg-red-950/5">
+                    <div class="audit-label text-red-400 mb-2">SYSTEM AUDITING // KINETIC TRIAGE</div>
+                    <p class="text-[11px] opacity-70">Real-time systemic failure diagnostics. Evaluates physical and digital vectors simultaneously—monitoring single-points-of-failure, pressure dynamics, structural loops, and immediate telemetry feedback to isolate anomalies before systemic collapse.</p>
                 </div>
             </div>
         </div>
@@ -110,7 +136,7 @@
             <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
                 <input type="text" name="identifier" placeholder="IDENTIFIER" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
                 <input type="email" name="node" placeholder="RETURN_NODE (EMAIL)" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
-                <textarea name="operation" placeholder="DESCRIBE OPERATION / ARCHITECTURE REQUIREMENTS (Specify if commercial VIGIL allocation is required)" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl h-40 outline-none resize-none text-white text-sm"></textarea>
+                <textarea name="operation" placeholder="DESCRIBE OPERATION / ARCHITECTURE REQUIREMENTS (Specify if commercial VIGIL allocation or KINETIC Edge hardware profiling is required)" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl h-40 outline-none resize-none text-white text-sm"></textarea>
                 <button type="submit" class="w-full bg-cyan-600 text-black font-black p-4 rounded-xl uppercase tracking-widest text-xs">Transmit</button>
             </form>
         </div>
@@ -118,7 +144,7 @@
 
     <script>
         function switchTab(t) {
-            ['forge', 'axial', 'contact'].forEach(tab => {
+            ['forge', 'kinetic', 'axial', 'contact'].forEach(tab => {
                 document.getElementById('tab-' + tab).classList.toggle('hidden-tab', tab !== t);
                 document.getElementById('btn-' + tab).classList.toggle('tab-active', tab === t);
             });
