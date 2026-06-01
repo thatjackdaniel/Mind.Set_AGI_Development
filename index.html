@@ -72,17 +72,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="audit-card border-red-500/10 bg-red-950/5">
                         <div class="audit-label text-red-400 mb-2">EDGE DECK</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">Sovereign hardware orchestration infrastructure. Hardened compute platform mapped for offline multi-agent synchronization and direct edge-robotics telemetry without upstream dependencies.</p>
+                        <p class="text-[10px] opacity-60 leading-relaxed">Autonomous drone system utilizing All-Source Positioning and Navigation (ASPN). Executes real-time Boyd OODA loops to track, guide targets to their destination, or engage tactical assets in denied environments.</p>
                     </div>
                     
                     <div class="audit-card border-red-500/10 bg-red-950/5">
                         <div class="audit-label text-red-400 mb-2">ANVIL</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">Underlying security container and bare-metal shielding framework. Protects the structural integrity of localized models, cryptographic keys, and binary data shards under physical or adversarial interception vectors.</p>
+                        <p class="text-[10px] opacity-60 leading-relaxed">Defensive counter-drone grid engineered to thwart adversarial ASPN drone attacks by corrupting or denying environmental sensor inputs and breaking enemy navigation loops.</p>
                     </div>
 
                     <div class="audit-card border-red-500/10 bg-red-950/5">
                         <div class="audit-label text-red-400 mb-2">TRIAGE</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">Real-time systemic failure diagnostics. Evaluates physical and digital vectors simultaneously—monitoring single-points-of-failure, pressure dynamics, structural loops, and immediate telemetry feedback.</p>
+                        <p class="text-[10px] opacity-60 leading-relaxed">The DARPA Triage Challenge core engine. Implements real-time physiological and telemetry tracking pipelines to execute non-contact status logging and route coordination in high-stakes settings.</p>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,6 @@
             if(!input) return;
             results.classList.remove('hidden-tab');
 
-            // Native evaluation dataset for system validation
             if(input.includes("rubio") || input.includes("nato")) {
                 traceContainer.innerHTML = `<div class="trace-box">
                     <div class="audit-label !text-cyan-500 mb-1">Audit Trace: Linguistic</div>
@@ -166,18 +165,25 @@
                 payload.innerText = `"U.S. Senator Marco Rubio discussed NATO security cooperation with European officials amidst shifting foreign policy debate."`;
             } else if(input.includes("kinetic") || input.includes("edge deck")) {
                 traceContainer.innerHTML = `<div class="trace-box border-red-500">
-                    <div class="audit-label !text-red-400 mb-1">Audit Trace: Kinematics Fusion</div>
-                    <div class="text-white text-sm font-mono mb-2">State Vector Formulation Active: [x, y, vx, vy, theta, variance]</div>
-                    <div class="text-[11px] opacity-70">[KINETIC_CORE]: EKF running on-board companion SBC. 10Hz MAVLink attitude overrides active.</div>
+                    <div class="audit-label !text-red-400 mb-1">Audit Trace: KINETIC Autonomous Flight</div>
+                    <div class="text-white text-sm font-mono mb-2">ASPN Guidance Loop Active</div>
+                    <div class="text-[11px] opacity-70">[KINETIC_DECK]: Executing localized Boyd OODA targets. Closed-loop navigation streaming.</div>
                 </div>`;
-                payload.innerText = `"Kinematic Inertial Navigation loop validated. GPS Jammed fallback rules operating within normal limits."`;
+                payload.innerText = `"Kinematic tracking parameters confirmed. Telemetry active."`;
             } else if(input.includes("anvil")) {
-                traceContainer.innerHTML = `<div class="trace-box border-amber-500">
-                    <div class="audit-label !text-amber-400 mb-1">Audit Trace: Shielding Container</div>
-                    <div class="text-white text-sm font-mono mb-2">Bare-Metal Isolation Protocol</div>
-                    <div class="text-[11px] opacity-70">[ANVIL_SECURE]: Local cryptographic keys and .set shards insulated from adversarial interception loops.</div>
+                traceContainer.innerHTML = `<div class="trace-box border-red-500">
+                    <div class="audit-label !text-red-400 mb-1">Audit Trace: Area Denial</div>
+                    <div class="text-white text-sm font-mono mb-2">Counter-ASPN Intercept Array</div>
+                    <div class="text-[11px] opacity-70">[ANVIL_ACTIVE]: Tracking incoming spatial signatures. Environmental loop disruption engaged.</div>
                 </div>`;
-                payload.innerText = `"A.N.V.I.L. bare-metal container verification successful. Null-Vector area denial arrays online."`;
+                payload.innerText = `"Adversarial tracking vectors isolated. Countermeasures standing by."`;
+            } else if(input.includes("triage")) {
+                traceContainer.innerHTML = `<div class="trace-box border-red-500">
+                    <div class="audit-label !text-red-400 mb-1">Audit Trace: DARPA DTC</div>
+                    <div class="text-white text-sm font-mono mb-2">Physiological Stream Analysis</div>
+                    <div class="text-[11px] opacity-70">[TRIAGE_CORE]: Processing multi-spectral non-contact diagnostics and spatial rescue routing.</div>
+                </div>`;
+                payload.innerText = `"DTC telemetry loop verified. Assessment matrices tracking normal."`;
             } else {
                 traceContainer.innerHTML = `<div class="opacity-30 text-xs italic">Signal Neutralized. No clinical anomalies detected.</div>`;
                 payload.innerText = `"Raw signal processed. Lexical symmetry maintained."`;
