@@ -5,30 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mind.Set | Sovereign AGI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
-        body { background-color: #020406; color: #d1d5db; font-family: 'Inter', ui-monospace, monospace; -webkit-text-size-adjust: 100%; }
-        .glass { background: rgba(10, 20, 30, 0.6); backdrop-filter: blur(25px); border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 24px; }
-        .cyan-glow { color: #06b6d4; text-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
-        .amber-glow { color: #f59e0b; text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
-        .red-glow { color: #ef4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
-        .audit-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 18px; }
+        body { 
+            background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
+            color: #1e2937; 
+            font-family: 'Inter', system-ui, sans-serif; 
+        }
+        .glass { 
+            background: rgba(255,255,255,0.85); 
+            backdrop-filter: blur(24px); 
+            border: 1px solid rgba(14, 165, 233, 0.2); 
+            border-radius: 24px; 
+        }
+        .cyan-glow { 
+            color: #0ea5e9; 
+            text-shadow: 0 0 15px rgba(14, 165, 233, 0.5); 
+        }
+        .amber-glow { 
+            color: #f59e0b; 
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); 
+        }
+        .red-glow { 
+            color: #ef4444; 
+            text-shadow: 0 0 15px rgba(239, 68, 68, 0.5); 
+        }
+        .audit-card { 
+            background: rgba(255,255,255,0.95); 
+            border: 1px solid rgba(148,163,184,0.2); 
+            padding: 24px; 
+            border-radius: 20px; 
+            transition: all 0.4s ease;
+        }
+        .audit-card:hover {
+            border-color: #0ea5e9;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
         .hidden-tab { display: none; }
-        .tab-active { border-bottom: 2px solid #06b6d4; color: #06b6d4; font-weight: 900; }
-        .audit-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #06b6d4; font-weight: 800; }
-        .trace-box { border-left: 2px solid #06b6d4; padding-left: 15px; margin-bottom: 20px; }
-        .btn-primary { background: #fff; color: #000; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s; }
-        .btn-primary:hover { background: #06b6d4; color: #fff; transform: translateY(-2px); }
+        .tab-active { 
+            border-bottom: 3px solid #0ea5e9; 
+            color: #0ea5e9; 
+            font-weight: 900; 
+        }
+        .btn-primary { 
+            background: linear-gradient(90deg, #0ea5e9, #0284c8); 
+            color: white; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { 
+            background: linear-gradient(90deg, #0284c8, #0ea5e9); 
+            transform: translateY(-3px); 
+        }
     </style>
 </head>
 <body class="p-4 md:p-12 flex flex-col items-center min-h-screen">
 
     <header class="text-center mb-12 w-full max-w-2xl">
         <h1 class="text-4xl font-black tracking-tighter uppercase italic leading-none">MIND.SET</h1>
-        <p class="text-[10px] tracking-[0.5em] opacity-40 mt-3 uppercase text-cyan-500 font-bold">Sovereign AGI Ecosystem // San Antonio Node</p>
+        <p class="text-[10px] tracking-[0.5em] opacity-60 mt-3 uppercase text-sky-600 font-bold">Sovereign AGI Ecosystem // San Antonio Node</p>
     </header>
 
-    <nav class="flex space-x-10 mb-12 text-[11px] font-bold uppercase tracking-widest opacity-60">
+    <nav class="flex space-x-10 mb-12 text-[11px] font-bold uppercase tracking-widest">
         <button id="btn-forge" onclick="switchTab('forge')" class="pb-2 tab-active">Forge Doctrine</button>
         <button id="btn-axial" onclick="switchTab('axial')" class="pb-2">Axial Audit [OPEN]</button>
         <button id="btn-contact" onclick="switchTab('contact')" class="pb-2">Inquiry Node</button>
@@ -38,51 +79,51 @@
         
         <div id="tab-forge" class="tab-content space-y-8">
             <div class="text-center space-y-6">
-                <blockquote class="text-xs italic opacity-50 tracking-wide">"To freedom and elegance we forge our path bravely; windswept and chapped we must move on."</blockquote>
-                <h2 class="text-5xl font-black text-white leading-tight">THE <span class="cyan-glow">FORGE.</span></h2>
-                <p class="text-sm opacity-70 leading-relaxed mx-auto border-l-2 border-cyan-500 pl-4 text-left">Mind.Set is a vertically integrated, decentralized AGI suite engineered on PLEXUS and Strema for high-stakes, low-connectivity environments. We prioritize <span class="text-white font-bold">Sovereign Architecture</span>—ensuring intelligence remains localized, impartial, and persistent at the edge.</p>
+                <blockquote class="text-xs italic opacity-60 tracking-wide">"To freedom and elegance we forge our path bravely; windswept and chapped we must move on."</blockquote>
+                <h2 class="text-5xl font-black text-slate-900 leading-tight">THE <span class="cyan-glow">FORGE.</span></h2>
+                <p class="text-sm opacity-80 leading-relaxed mx-auto border-l-2 border-sky-500 pl-4 text-left">Mind.Set is a vertically integrated, decentralized AGI suite engineered on PLEXUS and Strema for high-stakes, low-connectivity environments. We prioritize <span class="text-slate-900 font-bold">Sovereign Architecture</span>—ensuring intelligence remains localized, impartial, and persistent at the edge.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="audit-card">
                     <div class="audit-label mb-2">01 // SHARDFORGE</div>
-                    <p class="text-[11px] opacity-60">Proprietary binary sharding (.set) for offline-first data persistence across Verostrat distributed frameworks.</p>
+                    <p class="text-[11px] opacity-70">Proprietary binary sharding (.set) for offline-first data persistence across Verostrat distributed frameworks.</p>
                 </div>
-                <div class="audit-card border-cyan-500/30">
-                    <div class="audit-label mb-2 text-cyan-400">02 // AXIAL [PUBLIC NODE]</div>
-                    <p class="text-[11px] opacity-60">Cognitive filter for Lexical Symmetry Audits. Codebase officially transitioned to Open Source. Free to deploy, inspect, and modify.</p>
+                <div class="audit-card border-sky-500/30">
+                    <div class="audit-label mb-2 text-sky-600">02 // AXIAL [PUBLIC NODE]</div>
+                    <p class="text-[11px] opacity-70">Cognitive filter for Lexical Symmetry Audits. Codebase officially transitioned to Open Source. Free to deploy, inspect, and modify.</p>
                 </div>
                 <div class="audit-card">
                     <div class="audit-label mb-2">03 // ALETHEIAN</div>
-                    <p class="text-[11px] opacity-60">Master orchestration layer. Glassmorphism hive-mind interface optimized for mobile edge-computing and decentralized networks.</p>
+                    <p class="text-[11px] opacity-70">Master orchestration layer. Glassmorphism hive-mind interface optimized for mobile edge-computing and decentralized networks.</p>
                 </div>
                 <div class="audit-card">
                     <div class="audit-label mb-2">04 // MYELIN</div>
-                    <p class="text-[11px] opacity-60">Neural synthesis engine. Secure, client-side voice interaction executing completely offline without data transmission.</p>
+                    <p class="text-[11px] opacity-70">Neural synthesis engine. Secure, client-side voice interaction executing completely offline without data transmission.</p>
                 </div>
-                <div class="audit-card md:col-span-2 border-amber-500/20 bg-amber-950/5">
-                    <div class="audit-label mb-2 text-amber-500">PROPRIETARY NOTICE // VIGIL [CLOSED SOURCE]</div>
+                <div class="audit-card md:col-span-2 border-amber-500/30 bg-amber-50">
+                    <div class="audit-label mb-2 text-amber-600">PROPRIETARY NOTICE // VIGIL [CLOSED SOURCE]</div>
                     <p class="text-[11px] opacity-70">Vigil has been officially pulled from public availability and un-open-sourced. Transitioned exclusively to a closed-source, premium monetization matrix. Commercial licensing and enterprise telemetry access available via formal allocation only.</p>
                 </div>
             </div>
 
-            <div class="space-y-4 pt-4 border-t border-white/5">
-                <div class="audit-label text-red-500 tracking-[0.4em] font-black">KINETIC OPERATIONAL LAYER</div>
+            <div class="space-y-4 pt-4 border-t border-slate-200">
+                <div class="audit-label text-red-600 tracking-[0.4em] font-black">KINETIC OPERATIONAL LAYER</div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="audit-card border-red-500/10 bg-red-950/5">
-                        <div class="audit-label text-red-400 mb-2">EDGE DECK</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">Autonomous drone system utilizing All-Source Positioning and Navigation (ASPN). Executes real-time Boyd OODA loops to track, guide targets to their destination, or engage tactical assets in denied environments.</p>
+                    <div class="audit-card border-red-200">
+                        <div class="audit-label text-red-600 mb-2">EDGE DECK</div>
+                        <p class="text-[10px] opacity-70 leading-relaxed">Autonomous drone system utilizing All-Source Positioning and Navigation (ASPN). Executes real-time Boyd OODA loops to track, guide targets to their destination, or engage tactical assets in denied environments.</p>
                     </div>
                     
-                    <div class="audit-card border-red-500/10 bg-red-950/5">
-                        <div class="audit-label text-red-400 mb-2">ANVIL</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">Defensive counter-drone grid engineered to thwart adversarial ASPN drone attacks by corrupting or denying environmental sensor inputs and breaking enemy navigation loops.</p>
+                    <div class="audit-card border-red-200">
+                        <div class="audit-label text-red-600 mb-2">ANVIL</div>
+                        <p class="text-[10px] opacity-70 leading-relaxed">Defensive counter-drone grid engineered to thwart adversarial ASPN drone attacks by corrupting or denying environmental sensor inputs and breaking enemy navigation loops.</p>
                     </div>
 
-                    <div class="audit-card border-red-500/10 bg-red-950/5">
-                        <div class="audit-label text-red-400 mb-2">TRIAGE</div>
-                        <p class="text-[10px] opacity-60 leading-relaxed">The DARPA Triage Challenge core engine. Implements real-time physiological and telemetry tracking pipelines to execute non-contact status logging and route coordination in high-stakes settings.</p>
+                    <div class="audit-card border-red-200">
+                        <div class="audit-label text-red-600 mb-2">TRIAGE</div>
+                        <p class="text-[10px] opacity-70 leading-relaxed">The DARPA Triage Challenge core engine. Implements real-time physiological and telemetry tracking pipelines to execute non-contact status logging and route coordination in high-stakes settings.</p>
                     </div>
                 </div>
             </div>
@@ -92,9 +133,9 @@
             <div class="glass p-6 space-y-4">
                 <div class="flex justify-between items-center">
                     <span class="audit-label">Raw_Intelligence_Lake_Input // AXIAL-v1.0.0-OPEN</span>
-                    <span class="text-[9px] font-bold opacity-30">ENCODING: .SET</span>
+                    <span class="text-[9px] font-bold opacity-50">ENCODING: .SET</span>
                 </div>
-                <textarea id="axial-input" placeholder="Paste data lake string for forensic analysis..." class="w-full bg-black/40 border border-white/10 p-4 rounded-xl h-32 focus:border-cyan-500 outline-none text-xs text-white resize-none"></textarea>
+                <textarea id="axial-input" placeholder="Paste data lake string for forensic analysis..." class="w-full bg-white border border-slate-200 p-4 rounded-xl h-32 focus:border-sky-500 outline-none text-sm resize-none"></textarea>
                 <button onclick="executeDeepScan()" class="w-full btn-primary py-4 rounded-xl text-xs">Audit Signal ></button>
             </div>
 
@@ -102,11 +143,11 @@
                 <div class="audit-card grid grid-cols-2 gap-4">
                     <div>
                         <div class="audit-label">Taxonomy</div>
-                        <div class="text-xl font-black text-white uppercase mt-1">Somatic</div>
+                        <div class="text-xl font-black text-slate-900 uppercase mt-1">Somatic</div>
                     </div>
                     <div class="text-right">
                         <div class="audit-label">Confidence</div>
-                        <div class="text-xl font-black text-cyan-500 mt-1">95%</div>
+                        <div class="text-xl font-black text-sky-600 mt-1">95%</div>
                     </div>
                 </div>
 
@@ -116,24 +157,24 @@
                 </div>
 
                 <div class="audit-card">
-                    <div class="audit-label text-white/50 border-b border-white/10 pb-2 mb-4">Forensic_Audit_Evidence</div>
+                    <div class="audit-label text-slate-500 border-b border-slate-200 pb-2 mb-4">Forensic_Audit_Evidence</div>
                     <div id="trace-container"></div>
                 </div>
 
-                <div class="audit-card bg-cyan-500/5 border-cyan-500/20">
+                <div class="audit-card bg-sky-50 border-sky-200">
                     <div class="audit-label mb-3">Neutralized_Signal_Payload</div>
-                    <p id="payload-text" class="text-sm italic text-white leading-relaxed"></p>
+                    <p id="payload-text" class="text-sm italic text-slate-700 leading-relaxed"></p>
                 </div>
             </div>
         </div>
 
         <div id="tab-contact" class="tab-content hidden-tab glass p-8">
-            <h2 class="text-2xl font-black mb-6 uppercase text-cyan-500 italic">Inquiry_Node</h2>
+            <h2 class="text-2xl font-black mb-6 uppercase text-sky-600 italic">Inquiry_Node</h2>
             <form action="https://formspree.io/f/meenllde" method="POST" class="space-y-4">
-                <input type="text" name="identifier" placeholder="IDENTIFIER" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
-                <input type="email" name="node" placeholder="RETURN_NODE (EMAIL)" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none text-white text-sm">
-                <textarea name="operation" placeholder="DESCRIBE OPERATION / ARCHITECTURE REQUIREMENTS (Specify if commercial VIGIL allocation or KINETIC Edge hardware profiling is required)" required class="w-full bg-black/40 border border-white/10 p-4 rounded-xl h-40 outline-none resize-none text-white text-sm"></textarea>
-                <button type="submit" class="w-full bg-cyan-600 text-black font-black p-4 rounded-xl uppercase tracking-widest text-xs">Transmit</button>
+                <input type="text" name="identifier" placeholder="IDENTIFIER" required class="w-full bg-white border border-slate-200 p-4 rounded-xl outline-none text-slate-800 text-sm">
+                <input type="email" name="node" placeholder="RETURN_NODE (EMAIL)" required class="w-full bg-white border border-slate-200 p-4 rounded-xl outline-none text-slate-800 text-sm">
+                <textarea name="operation" placeholder="DESCRIBE OPERATION / ARCHITECTURE REQUIREMENTS (Specify if commercial VIGIL allocation or KINETIC Edge hardware profiling is required)" required class="w-full bg-white border border-slate-200 p-4 rounded-xl h-40 outline-none resize-none text-slate-800 text-sm"></textarea>
+                <button type="submit" class="w-full btn-primary p-4 rounded-xl uppercase tracking-widest text-xs">Transmit</button>
             </form>
         </div>
     </main>
@@ -158,34 +199,34 @@
 
             if(input.includes("rubio") || input.includes("nato")) {
                 traceContainer.innerHTML = `<div class="trace-box">
-                    <div class="audit-label !text-cyan-500 mb-1">Audit Trace: Linguistic</div>
-                    <div class="text-white text-lg font-serif italic mb-2">"tensions simmer"</div>
+                    <div class="audit-label !text-sky-600 mb-1">Audit Trace: Linguistic</div>
+                    <div class="text-slate-900 text-lg font-serif italic mb-2">"tensions simmer"</div>
                     <div class="text-[11px] opacity-70">[ANALYSIS_AUDIT]: Emotional priming used to suggest underlying conflict without specifying metrics.</div>
                 </div>`;
                 payload.innerText = `"U.S. Senator Marco Rubio discussed NATO security cooperation with European officials amidst shifting foreign policy debate."`;
             } else if(input.includes("kinetic") || input.includes("edge deck")) {
-                traceContainer.innerHTML = `<div class="trace-box border-red-500">
-                    <div class="audit-label !text-red-400 mb-1">Audit Trace: KINETIC Autonomous Flight</div>
-                    <div class="text-white text-sm font-mono mb-2">ASPN Guidance Loop Active</div>
+                traceContainer.innerHTML = `<div class="trace-box">
+                    <div class="audit-label !text-red-500 mb-1">Audit Trace: KINETIC Autonomous Flight</div>
+                    <div class="text-slate-900 text-sm font-mono mb-2">ASPN Guidance Loop Active</div>
                     <div class="text-[11px] opacity-70">[KINETIC_DECK]: Executing localized Boyd OODA targets. Closed-loop navigation streaming.</div>
                 </div>`;
                 payload.innerText = `"Kinematic tracking parameters confirmed. Telemetry active."`;
             } else if(input.includes("anvil")) {
-                traceContainer.innerHTML = `<div class="trace-box border-red-500">
-                    <div class="audit-label !text-red-400 mb-1">Audit Trace: Area Denial</div>
-                    <div class="text-white text-sm font-mono mb-2">Counter-ASPN Intercept Array</div>
+                traceContainer.innerHTML = `<div class="trace-box">
+                    <div class="audit-label !text-red-500 mb-1">Audit Trace: Area Denial</div>
+                    <div class="text-slate-900 text-sm font-mono mb-2">Counter-ASPN Intercept Array</div>
                     <div class="text-[11px] opacity-70">[ANVIL_ACTIVE]: Tracking incoming spatial signatures. Environmental loop disruption engaged.</div>
                 </div>`;
                 payload.innerText = `"Adversarial tracking vectors isolated. Countermeasures standing by."`;
             } else if(input.includes("triage")) {
-                traceContainer.innerHTML = `<div class="trace-box border-red-500">
-                    <div class="audit-label !text-red-400 mb-1">Audit Trace: DARPA DTC</div>
-                    <div class="text-white text-sm font-mono mb-2">Physiological Stream Analysis</div>
+                traceContainer.innerHTML = `<div class="trace-box">
+                    <div class="audit-label !text-red-500 mb-1">Audit Trace: DARPA DTC</div>
+                    <div class="text-slate-900 text-sm font-mono mb-2">Physiological Stream Analysis</div>
                     <div class="text-[11px] opacity-70">[TRIAGE_CORE]: Processing multi-spectral non-contact diagnostics and spatial rescue routing.</div>
                 </div>`;
                 payload.innerText = `"DTC telemetry loop verified. Assessment matrices tracking normal."`;
             } else {
-                traceContainer.innerHTML = `<div class="opacity-30 text-xs italic">Signal Neutralized. No clinical anomalies detected.</div>`;
+                traceContainer.innerHTML = `<div class="opacity-60 text-xs italic">Signal Neutralized. No clinical anomalies detected.</div>`;
                 payload.innerText = `"Raw signal processed. Lexical symmetry maintained."`;
             }
 
@@ -201,8 +242,8 @@
                     labels: ['O', '', '', '', 'T'],
                     datasets: [{
                         data: [45, 10, 50, 30, 40],
-                        borderColor: '#06b6d4',
-                        backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                        borderColor: '#0ea5e9',
+                        backgroundColor: 'rgba(14, 165, 233, 0.1)',
                         fill: true,
                         tension: 0.4,
                         borderWidth: 2
@@ -210,7 +251,7 @@
                 },
                 options: {
                     plugins: { legend: { display: false } },
-                    scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 9 } } } }
+                    scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#64748b', font: { size: 9 } } } }
                 }
             });
         }
